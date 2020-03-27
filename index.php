@@ -11,8 +11,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 // Fetch Url.
 $url = $_SERVER['REQUEST_URI'];
+
 // Create  an array of parameters.
 $param = explode("/", $url);
 if (isset ($param[2]))
@@ -21,16 +23,19 @@ if (isset ($param[3]))
   $_GET['function'] = $param[3];
 if (isset ($param[4]))
   $_GET['id'] = $param[4];
+
 // Set default value of controller and function to home.
 $controller = 'home';
 $function = 'home';
-// Set the Parameters if setted.
+
+// Set the Parameters if provided in URL.
 if (isset ($_GET['controller']) && $_GET['controller'] != '') {
   $controller = $_GET['controller'];
 }
 if (isset ($_GET['function']) && $_GET['function'] != '') {
   $function = $_GET['function'];
 }
+
 // Started the session.
 session_start ();
 // Included the header.
@@ -42,6 +47,7 @@ include ('controllers/'.$controller.'Controller.php');
 else {
   include ('view/pageNotFound.php');
 }
+
 // Creating object from the controller passed in the parameter.
 $class = ucfirst($controller).'Controller';
 $obj = new $class;
