@@ -8,9 +8,9 @@
 
 <?php
 // Enable Error reporting for the system.
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Fetch Url.
 $url = $_SERVER['REQUEST_URI'];
 // Create  an array of parameters.
@@ -21,7 +21,7 @@ if (isset ($param[3]))
   $_GET['function'] = $param[3];
 if (isset ($param[4]))
   $_GET['id'] = $param[4];
-// Set default controller and function to home.
+// Set default value of controller and function to home.
 $controller = 'home';
 $function = 'home';
 // Set the Parameters if setted.
@@ -50,6 +50,6 @@ if (method_exists ($obj, $function)) {
   $obj -> $function ();
 }
 else {
-  include('view/pageNotFound.php');
+  include ('view/pageNotFound.php');
 }
 ?>
