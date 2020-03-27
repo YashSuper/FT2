@@ -1,3 +1,7 @@
+<!--
+  * @file
+  * this file is the base for using in other models.
+-->
 <?php
 $servername = "localhost";
 $username = "yash";
