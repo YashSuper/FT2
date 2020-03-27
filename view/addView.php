@@ -1,3 +1,7 @@
+<!--
+  * @file
+  * this file is used for render out UI for add blog.
+-->
 <div class="container">
   <br>
   <form class="form-group" action="/index/user/add"  method="post" enctype="multipart/form-data">

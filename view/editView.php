@@ -1,3 +1,7 @@
+<!--
+  * @file
+  * this file is used for render out UI for update blog.
+-->
 <?php
 $temp = mysqli_fetch_array($res);  ?>
 <div class="container">
