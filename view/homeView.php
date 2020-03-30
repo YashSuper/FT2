@@ -73,7 +73,7 @@
         echo "<a href='/index/user/delete/".$temp['id']."' class='btn btn-info float-right mx-3'>DELETE</a>";
 
       }
+      echo "</div>";
     }
-    echo "</div>";
 
 ?>
