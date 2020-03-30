@@ -1,6 +1,6 @@
 <!--
   * @file
-  * this file is used selecting out specific blog.
+  * This file is used selecting out specific blog.
 -->
 <?php
 // Included base connector file.

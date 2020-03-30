@@ -1,38 +1,10 @@
 <!--
   * @file
-  * this file is used for render out home view for blogs.
+  * This file is used for render out home view for blogs.
 -->
 
-<!-- styling for blog cards -->
-<style media="screen">
-.ulogin {
-  background-color: #002b4f;
-  padding: 50px;
-  color: white;
-  box-shadow: 0px 4px 5px #454444;
-  transition: all .1s ease;
-
-}
-.ulogin:hover {
-  transform: scale(1.01);
-  box-shadow: 0px 4px 10px #00ddff;
-  background-color: rgba(20,148,255,.9);
-
-}
-.login {
-  color: white;
-  background-color: #ba3b00;
-  padding: 50px;
-  box-shadow: 0px 4px 5px #454444;
-  transition: all .2s ease;
-}
-.login:hover {
-  transform: scale(1.01);
-  box-shadow: 0px 4px 10px #00ddff;
-  background-color: rgba(255,119,0,.9);
-  }
-
-</style>
+<!-- Styling for blog cards -->
+<link rel="stylesheet" href="/view/css/homeView.css">
 
 <?php
   // Fetching out row from the returned mysqli_result_object.
@@ -56,7 +28,7 @@
       echo "<div class='login container'>";
     }
 
-    echo "<h1>  <a style ='color:white;' href='/index/blog/show/".$temp['id']."'>".$temp['Title']."</a></h1>
+    echo "<h1>  <a  href='/index/blog/show/".$temp['id']."'>".$temp['Title']."</a></h1>
     </a>
     <hr>
     <h5>";

@@ -1,6 +1,6 @@
 <!--
   * @file
-  * this file is used for fetching out logged in user's details .
+  * This file is used for fetching out logged in user's details .
 -->
 <?php
 // Included base connector file.

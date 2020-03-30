@@ -1,12 +1,12 @@
 <!--
   * @file
-  * this file is used for render out UI for update blog.
+  * This file is used for render out UI for update blog.
 -->
 <?php
 $temp = mysqli_fetch_array($res);  ?>
 <div class="container">
   <br>
-  <form class="form-group" action="/index/user/edit"  method="post" enctype="multipart/form-data">
+  <form class="form-group" action="/index/user/edit/<?php echo $_GET['id'];?>"  method="post" enctype="multipart/form-data">
     <input <?php echo 'value="'.$temp['Title'].'"'; ?> class="form-control" type="text" name="Title"  required placeholder="Enter Title of the Post"> <br>
     <textarea name="Des" rows="8" cols="121" required placeholder="Enter Description of the post"><?php echo $temp['Des'];  ?></textarea>
     <br><br>

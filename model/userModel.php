@@ -83,12 +83,12 @@ class UserModel {
    *  @return mixed
    *  This Function returns the mysqli_result_object.
    */
-  function update ($title, $des, $img_locate, $time,$id) {
+  function update ($title, $des, $img_locate, $time, $id) {
     $username = $_SESSION['username'];
     include ('dbconnector.php');
     mysqli_select_db($con, 'blog');
     // Image will be updated only when there is a change.
-    if ($_FILES['pic']) {
+    if ($_FILES['pic']['tmp_name'] ) {
       $q = "UPDATE blog
       SET Title = '$title', Des= '$des', time = '$time', image = '$img_locate'
       WHERE id = '$id'";
@@ -115,8 +115,10 @@ class UserModel {
     $q = "SELECT * from blog where id = '$id' ";
     $temp = mysqli_query($con, $q);
     $res =  mysqli_fetch_array ($temp);
+
     if($res['username']  == $_SESSION['username']){
       return True;
+
     }
     else {
       return False;

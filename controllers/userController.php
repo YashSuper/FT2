@@ -1,9 +1,9 @@
 <!--
   * @file
-  * this file is used for performing user operations and render out suitable results.
+  * This file is used for performing user operations and render out suitable results.
 -->
 <?php
-// Check for logged in.
+// Check for if already logged in.
  if (!isset ($_SESSION['username'])) {
    header('location: index.php');
 }
@@ -11,7 +11,6 @@
 /**
  * Implements logged in user operations namely add, delete, udpate.
  */
-
 class UserController {
 
   /**
@@ -90,31 +89,31 @@ class UserController {
   * Function edit updates a record.
   * @return bool
   */
- function edit() {
+ function edit () {
    $id = $_GET['id'];
    $userObj = new UserModel;
-   if(!$userObj -> isown ($id)){
+   if(!($userObj -> isown ($id))) {
      header('location: /index/blog/access_denied');
    }
 
-   if(isset($_POST['Title'])) {
+   if (isset($_POST['Title'])) {
      $title = $_POST['Title'];
      $des = $_POST['Des'];
      $time = time();
+     $img_locate = '';
      $username = $_SESSION['username'];
-     echo $_SESSION['username'];
-     if($_FILES['pic']) {
+       // Stores the temp name of image.
+     if ($_FILES['pic']['tmp_name']) {
        $img = $_FILES['pic']['name'];
-       //stores the temp name of image
        $tmp_img = $_FILES['pic']['tmp_name'];
-       //locate the image in the folder
+       echo $tmp_img;
+       // Locate the image in the folder.
        $img_locate = "pic/" . $img;
        move_uploaded_file($tmp_img,$img_locate);
    }
-    $id = $_GET['id'];
-    $res = $userObj -> update($title, $des, $img_locate, $time, $id);
+    $res = $userObj -> update ($title, $des, $img_locate, $time, $id);
      if ($res) {
-       header('location:/');
+       header('location: /');
      }
    }
    include('model/blogModel.php');

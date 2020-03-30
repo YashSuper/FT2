@@ -1,6 +1,6 @@
 <!--
   * @file
-  * this file is used for render out UI for login page.
+  * This file is used for render out UI for login page.
 -->
 <div class="mx-auto my-5" style="width:50%;padding:50px;box-shadow:0px 3px 7px #1a1a1a;">
     <form class="login form-group" action="/index/login/validate" method="post">

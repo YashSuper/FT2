@@ -1,6 +1,6 @@
 <!--
   * @file
-  * this file is used for fetching out all the blogs.
+  * This file is used for fetching out all the blogs.
 -->
 <?php
 // Included base connector file.

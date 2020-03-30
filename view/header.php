@@ -1,6 +1,6 @@
 <!--
   * @file
-  * this file is used for render out Header.
+  * This file is used for render out Header.
 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Home</a>

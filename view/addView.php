@@ -1,6 +1,6 @@
 <!--
   * @file
-  * this file is used for render out UI for add blog.
+  * This file is used for render out UI for add blog.
 -->
 <div class="container">
   <br>

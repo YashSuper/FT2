@@ -1,6 +1,6 @@
 <!--
   * @file
-  * this file is used for render page not found.
+  * This file is used for render page not found.
 -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

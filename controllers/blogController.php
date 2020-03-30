@@ -1,6 +1,6 @@
 <?php
 /**
- * class for showing the blog in expanded form.
+ * Class for showing the blog in expanded form.
  */
 class BlogController {
   /**
