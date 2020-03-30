@@ -1,3 +1,7 @@
+<!--
+  * @file
+  * this file is used for performing user operations and render out suitable results.
+-->
 <?php
 // Check for logged in.
  if (!isset ($_SESSION['username'])) {
@@ -59,8 +63,7 @@ class UserController {
        header('location:/');
      }
    }
-   else{
-
+   else {
      include('view/addView.php');
    }
 
@@ -76,8 +79,6 @@ class UserController {
    if(!$userObj -> isown ($id)){
      header('location: /index/blog/access_denied');
    }
-   $id = $_GET['id'];
-   $userObj = new UserModel;
    $res = $userObj -> delete ($id);
    if ($res){
      header('location:/');

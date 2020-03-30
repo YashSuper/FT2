@@ -25,13 +25,9 @@ class LoginController {
          header('location: /index/user/myblogs');
          break;
        }
-       else {
-         echo '<div class="alert alert-danger" role="alert"> Wrong Username or password  </div>';
-         include ('view/loginView.php');
-         break;
-
-       }
      }
+     echo '<div class="alert alert-danger" role="alert"> Wrong Username or password  </div>';
+       include ('view/loginView.php');
    }
 
    /**

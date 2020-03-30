@@ -1,3 +1,8 @@
+ /*
+  @file
+  This file is CSS for homeView.php .
+ */
+
 .login {
   color: white;
   background-color: #ba3b00;
@@ -11,4 +16,3 @@
   box-shadow: 0px 4px 10px #00ddff;
   background-color: rgba(255,119,0,.9);
   cursor: pointer;}
-  

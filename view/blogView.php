@@ -6,8 +6,8 @@
 $temp = mysqli_fetch_array ($res);
 if(isset ($_SESSION ['username']))
 if ($_SESSION['username'] == $temp['username']) {
-  echo "<a  style='position:sticky' href='/index/user/edit/".$temp['id']."' class='btn btn-info float-right mx-3'>EDIT</a>";
-  echo "<a style='position:sticky' href='/index/user/delete/".$temp['id']."' class='btn btn-info float-right mx-3'>DELETE</a>";
+  echo "<a href='/index/user/edit/".$temp['id']."' class='btn btn-info float-right mx-3'>EDIT</a>";
+  echo "<a href='/index/user/delete/".$temp['id']."' class='btn btn-info float-right mx-3'>DELETE</a>";
 }
 
 if ($temp['image']) {
