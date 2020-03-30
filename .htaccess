@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^/?([a-zA-Z_0-9]+)/([a-zA-Z_0-9]+)/([a-zA-Z_0-9]+)$ index.php?control=$1&function=$2&id=$3 [L]
+RewriteRule ^index/?([a-zA-Z_0-9]+)/([a-zA-Z_0-9]+)/([a-zA-Z_0-9]+)$ index.php?control=$1&function=$2&id=$3 [L]
