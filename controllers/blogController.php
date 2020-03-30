@@ -11,6 +11,10 @@ class BlogController {
     include ('model/blogModel.php');
     include ('view/blogView.php');
   }
+
+  function access_denied () {
+    include ('view/access.php');
+  }
 }
 
 ?>

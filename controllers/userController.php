@@ -1,13 +1,21 @@
 <?php
 // Check for logged in.
-if (!isset ($_SESSION['username'])) {
-  header('location: index.php');
+ if (!isset ($_SESSION['username'])) {
+   header('location: index.php');
 }
 
 /**
  * Implements logged in user operations namely add, delete, udpate.
  */
+
 class UserController {
+
+  /**
+   * Constructor function adds up model code.
+   */
+  function __construct () {
+    include ('model/userModel.php');
+  }
 
  /**
   * Function home renders out the name of logged in user.
@@ -22,7 +30,8 @@ class UserController {
   * @return mixed
   */
  function myblogs () {
-   include ('model/userblogModel.php');
+   $userObj = new UserModel;
+   $res = $userObj -> myblogs ();
    include ('view/userblogView.php');
  }
 
@@ -44,9 +53,10 @@ class UserController {
      // Locate the image in the folder.
      $img_locate = "pic/" . $img;
      move_uploaded_file($tmp_img,$img_locate);
-     include('model/addModel.php');
+     $userObj = new UserModel;
+     $res = $userObj -> add ($title, $des, $img_locate, $time, $username);
      if ($res) {
-       header('location:index.php');
+       header('location:/');
      }
    }
    else{
@@ -62,8 +72,17 @@ class UserController {
   */
  function delete () {
    $id = $_GET['id'];
-   include('model/deleteModel.php');
-   header('location:/');
+   $userObj = new UserModel;
+   if(!$userObj -> isown ($id)){
+     header('location: /index/blog/access_denied');
+   }
+   $id = $_GET['id'];
+   $userObj = new UserModel;
+   $res = $userObj -> delete ($id);
+   if ($res){
+     header('location:/');
+   }
+
  }
 
  /**
@@ -71,6 +90,12 @@ class UserController {
   * @return bool
   */
  function edit() {
+   $id = $_GET['id'];
+   $userObj = new UserModel;
+   if(!$userObj -> isown ($id)){
+     header('location: /index/blog/access_denied');
+   }
+
    if(isset($_POST['Title'])) {
      $title = $_POST['Title'];
      $des = $_POST['Des'];
@@ -85,7 +110,8 @@ class UserController {
        $img_locate = "pic/" . $img;
        move_uploaded_file($tmp_img,$img_locate);
    }
-     include('model/addModel.php');
+    $id = $_GET['id'];
+    $res = $userObj -> update($title, $des, $img_locate, $time, $id);
      if ($res) {
        header('location:/');
      }

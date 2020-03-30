@@ -28,6 +28,7 @@ class LoginController {
        else {
          echo '<div class="alert alert-danger" role="alert"> Wrong Username or password  </div>';
          include ('view/loginView.php');
+         break;
 
        }
      }
