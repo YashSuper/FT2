@@ -1,4 +1,4 @@
-<!--
+<?php namespace Model;?><!--
   * @file
   * This file is used for performing logged in user's operations on database.
 -->

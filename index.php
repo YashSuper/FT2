@@ -7,6 +7,11 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <?php
+use Controller\HomeController;
+use Controller\BlogController;
+use Controller\LoginController;
+use Controller\UserController;
+use Model\UserModel;
 // Enable Error reporting for the system.
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -36,14 +41,9 @@ session_start ();
 // Included the header.
 include ('view/header.php');
 // Include the controller file if its name is correct.
-if (file_exists('controllers/'.$controller.'Controller.php')) {
-  include ('controllers/'.$controller.'Controller.php');
-}
-else {
-  include ('view/pageNotFound.php');
-}
+include_once ('vendor/autoload.php');
 // Creating object from the controller passed in the parameter.
-$class = ucfirst($controller).'Controller';
+$class = 'Controller\\'.ucfirst($controller).'Controller';
 $obj = new $class;
 // Called the function of controller if it is a valid one.
 if (method_exists ($obj, $function)) {
