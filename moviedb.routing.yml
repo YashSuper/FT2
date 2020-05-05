@@ -1,0 +1,39 @@
+moviedb.list:
+  path: '/moviedb/list'
+  defaults:
+    _controller: '\Drupal\moviedb\Controller\Movie::list'
+    _title: 'movies database'
+  requirements:
+    _permission: 'access content'
+
+moviedb.actors:
+  path: '/moviedb/actors'
+  defaults:
+    _controller: '\Drupal\moviedb\Controller\Movie::getActors'
+    _title: 'List of all actors'
+  requirements:
+    _permission: 'access content'
+
+moviedb.actor:
+  path: '/moviedb/{node}'
+  defaults:
+    _controller: '\Drupal\moviedb\Controller\Movie::actorMovie'
+    _title: 'actors list with their recent movies'
+  requirements:
+    _permission: 'access content'
+
+moviedb.test:
+  path: '/student/{int}'
+  defaults:
+    _controller: '\Drupal\moviedb\Controller\Movie::test'
+    _title: 'Random int'
+  requirements:
+    _permission: 'access content'
+
+moviedb.costar:
+  path: '/moviedb/costar/{movie}/{nid}'
+  defaults:
+    _controller: '\Drupal\moviedb\Controller\Movie::costar'
+    _title: 'Co stars of the actor '
+  requirements:
+    _permission: 'access content'
