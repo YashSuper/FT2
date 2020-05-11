@@ -5,6 +5,19 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.supercomment {
+	border-left: 3px solid #5C5C5C;
+	transition: all .1s ease;
+	padding: 10px;
+  background-color: #FFFAFA;
+	margin-bottom: 20px;
+}
+.supercomment:hover {
+  border-left: 3px solid #5C5C5C;
+	background-color: #E8E8E8;
+  transform: scale(1.001);
+  padding-left: 30px;
+}
 .modal-body {
   text-transform: capitalize;
 }
@@ -34,14 +47,14 @@
 tr,img{
   transition: all .2s ease;
 }
-tr:hover{
+.table tr:hover{
 color: white;
 background-color: rgba(0,0,0,0.7);
 
 }
-tr:hover a{
+.table tr:hover a{
   color: #ff5b5b;
 }
-tr:hover img {
+.table tr:hover img {
   transform: scale(1.02);
 }

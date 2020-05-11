@@ -22,14 +22,6 @@ moviedb.actor:
   requirements:
     _permission: 'access content'
 
-moviedb.test:
-  path: '/student/{int}'
-  defaults:
-    _controller: '\Drupal\moviedb\Controller\Movie::test'
-    _title: 'Random int'
-  requirements:
-    _permission: 'access content'
-
 moviedb.costar:
   path: '/moviedb/costar/{movie}/{nid}'
   defaults:

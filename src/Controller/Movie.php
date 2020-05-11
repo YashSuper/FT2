@@ -7,6 +7,8 @@ use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\node\NodeInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+
+
 /**
  * Movie controller class.
  *  This class provides performes all the functions for various pages.
@@ -24,6 +26,9 @@ class Movie extends ControllerBase {
     $form_rendered = \Drupal::service('renderer')->render($form);
     // Get query parameter value
     $name = \Drupal::request()->query->get('word');
+    if($name == " ") {
+      $name = null;
+    }
     //Query fired to fetch node id of actor content type where title equal to $name.
     $bundle = 'actors';
     $query = \Drupal::entityQuery('node')
@@ -31,6 +36,7 @@ class Movie extends ControllerBase {
      ->condition('type', $bundle)
      ->condition('title', $name, 'CONTAINS');
     $act_id = $query->execute();
+
     //Query fired to fetch node id of movie content type where title equal to $name.
     $bundle = 'movie';
     if(empty($act_id) && $name) {
@@ -95,17 +101,16 @@ class Movie extends ControllerBase {
           // kint($actors[$j]);
           $j++;
          }
-         'poster' => $node_poster,
         $items[] = [
           'name' => $node_title,
+          'poster' => $node_poster,
           'nid' => $node_id,
           'des' => $node_des,
           'actors' =>$actors,
-          'ratings' =>$rating,
+          'ratings' =>floor($rating),
           'halfStarFlag' => $halfStarFlag,
         ];
       }
-
       return array(
       '#theme' => 'article_list',
       '#items' => $items,
@@ -124,7 +129,16 @@ class Movie extends ControllerBase {
    * @return mixed
    *  Returns the render array.
    */
-  public function actorMovie (NodeInterface $node) {
+  public function actorMovie (NodeInterface $node = null) {
+    // Check if the node is of actor type.
+    if ($node->getType() != 'actors') {
+      return array(
+        '#title' => t('Error in the application'),
+        '#markup' => t('This page is for actors only.'),
+      );
+    }
+    
+    else {
 
     // Get Name of the actor whose id is passed.
     $title = $node->title->value;
@@ -198,6 +212,8 @@ class Movie extends ControllerBase {
       );
     }
   }
+  }
+
 
   /**
    * Function getactors renders out the list of all actors.
@@ -229,8 +245,7 @@ class Movie extends ControllerBase {
           '#title' => t('List of all actors'),
         );
 
-      }
-    }
+      }    }
 
     /**
      * Function costar computes the costar of the particular actor in movie.
@@ -238,7 +253,6 @@ class Movie extends ControllerBase {
      *  This contains the nid of the movie.
      * @param  int $nid
      *  This contains the nid of the actor
-     * @return mixed
      */
     public function costar($movie=NULL, $nid=NULL) {
     $node = Node::load($movie);
@@ -268,7 +282,6 @@ class Movie extends ControllerBase {
        'role' => $role,
      ];
     return new JsonResponse($items);
+    }
   }
-
-
 ?>
